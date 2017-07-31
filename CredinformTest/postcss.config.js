@@ -2,9 +2,11 @@
     plugins: {
         'postcss-import': {},
         'cssnano': {},
-        'autoprefixer': {
-            browsers: ['last 2 versions', '> 5%'],
-        },
+        'doiuse': {},
+        'css-mqpacker': {},
+        'precss': {},
+        'postcss-colorblind': { method: 'achromatopsia'},
+        'postcss-data-packer': {},
         'postcss-cssnext': {
             browsers: ['last 2 versions', '> 5%'],
         },
