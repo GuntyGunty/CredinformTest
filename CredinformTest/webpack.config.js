@@ -1,11 +1,12 @@
 ﻿﻿'use strict';
 const
     path = require('path'),
-
     webpack = require('webpack'),
     BrowserSync = require('browser-sync-webpack-plugin'),
     merge = require('webpack-merge'),
     SpritesmithPlugin = require('webpack-spritesmith'),
+    validator = require('webpack-validator'),
+    HtmlPlugin = require('html-webpack-plugin'),
     ExtractTextPlugin = require('extract-text-webpack-plugin'),
     environment = process.env.NODE_ENV,
     addresses = {
@@ -63,7 +64,7 @@ const main = {
     },
 
     module: {
-        rules: [
+        loaders: [
             {
                 test: /\.css$/,
                 use: ExtractTextPlugin.extract(
@@ -78,7 +79,13 @@ const main = {
                     test: /\.png$/, loaders: [
                         'file-loader?name=i/[hash].[ext]'
                     ]
+            },
+                {
+                    test: /\.svg?$/,
+                    loader: 'svg-sprite!svgo',
+                    include: path.resolve('.Content/img/svg/*.svg')
                 }
+                
 
              
              
@@ -94,21 +101,21 @@ const main = {
             host: '192.168.1.177',
             port: 8082,
             proxy: 'http://192.168.1.177:8082/'
-        }),
-
+        }),     
         new ExtractTextPlugin({
             filename: (getPath) => {
                 return getPath('Styles/[name].css');
-            },
+            }, 
             allChunks: true
         }),
+    
           new SpritesmithPlugin({
             src: {
                 cwd: path.resolve(__dirname, 'Content/img/png/*.png'),
                 glob: 'Content/img/*.png'
             },
             target: {
-                image: path.resolve(__dirname, 'images/png/sprite.png'),
+                image: path.resolve(__dirname, 'sprite.png'),
                 css: path.resolve(__dirname, 'images/png/sprite.css')
             },
             apiOptions: {
