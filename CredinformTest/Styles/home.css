@@ -1,0 +1,19 @@
+
+/*Основные цвета*/
+/*Цвета элементов*/
+/*Прозрачность*/ body {
+    background: #aeaeae;
+    max-width: 310px
+}
+
+.list {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 50px
+}
+
+.main-section {
+    background: red
+}
+

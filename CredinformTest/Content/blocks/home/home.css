@@ -1,8 +1,13 @@
-﻿body {
+﻿﻿@import "../common/colors.css"; 
+
+body {
     background: #ada;
 }
 .list {
     width: calc(20px + 20px);
-    background-color: #ccc;
     display: flex;
+}
+
+.main-section {
+    background: red;
 }
