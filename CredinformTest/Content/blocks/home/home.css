@@ -1,11 +1,12 @@
-﻿﻿@import "../common/colors.css"; 
+﻿﻿@import "../common/colors.css";
 
 body {
-    background: #ada;
+    background: $color-gray--dark;
+    max-width: calc(300px + 10px);
 }
 .list {
-    width: calc(20px + 20px);
     display: flex;
+    width: calc(20px + 30px);
 }
 
 .main-section {
